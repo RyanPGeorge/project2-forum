@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-      <div>
-          <nav>
-            <div>
-              <a href="" >The Conversation</a>
-              <ul>
-                <li>
-                  <% if(user) { %>
-                  <a href="/logout"></i>Log Out</a>
-                <% } else { %>
-                  <a href="/auth/google"></i>Login with Google</a>
-                <% } %>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= title %></title>
+</head>
+<body>
+    <div>
+        <nav>
+          <div>
+            <a href="" >The Conversation</a>
+            <ul>
+              <li>
+              <% if (user) { %>
+                <a href="/logout"></i>Log Out</a>
+              <% } else { %>
+                <a href="/auth/google"></i>Login with Google</a>
+              <% } %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </head>
     <h1><%= title %></h1>
     <p>Join <%= title %></p>
-  </body>
+  </main>
+</body>
 </html>

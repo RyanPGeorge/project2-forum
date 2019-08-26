@@ -7,18 +7,27 @@ router.get('/', function(req, res, next) {
   res.render('index', { user: req.user, title: 'The Conversation'});
 });
 
+router.get('/', function(req, res, next) {
+  res.render('partials/header', { user: req.user, title: 'The Conversation'});
+});
+
 router.get('/auth/google', passport.authenticate(
   'google',
   { scope: ['profile', 'email'] }
 ));
 
-router.get('/login', passport.authenticate(
+router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/index',
-    failureRedirect : '/error'
+    successRedirect : '/',
+    failureRedirect : '/'
   }
 ));
+
+router.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/');
+});
 
 
 module.exports = router;
