@@ -6,7 +6,7 @@ var userSchema = new mongoose.Schema({
   name: String,
   email: String,
   location: String,
-  //posts: [postSchema],
+  // posts: [postSchema],
   googleId: String
 }, {
   timestamps: true
@@ -16,6 +16,7 @@ var postSchema = new mongoose.Schema({
   name: String, //user.name?
   Subject: String,
   Body: String,
+  // comments: [commentSchema],
 }, {
   timestamps: true
 });
