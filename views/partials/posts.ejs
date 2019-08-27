@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Author</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.forEach(function(p) { %>
+    <tr>
+      <td><%= p.subject %></td>
+      <td><%= p.user.name %></td>
+      <td><a href="/posts/<%= p._id %>">SEE POST</a></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

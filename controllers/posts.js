@@ -1,21 +1,34 @@
-var Post = require('../models/user');
+var Post = require('../models/post');
 
 module.exports = {
   index,
-  create
+  create,
+  delete: deleteOne,
+  new: newPost
 };
 
 function index(req, res) {
   Post.find({}, function(err, posts) {
-    res.render('posts/index', { title: 'All Posts', posts });
+    res.render('posts/index', {user: req.user, title: 'All Posts', posts });
   });
 }
 
+function newPost(req, res) {
+  res.render('posts/new', {user: req.user, title: 'New Post'})
+}
+
 function create(req, res) {
-  Post.findById(req.params.id, function(err, post) {
-    post.comment.push(req.body);
-    post.save(function(err) {
-      res.redirect(`/posts/${post._id}`);
-    });
-  });
+  var post = {
+    user: req.user,
+    subject: req.body.subject,
+    body: req.body.body
+  }
+  Post.create(post, function(err, p) {
+    res.redirect('/posts');
+  })
+}
+
+function deleteOne(req, res) {
+  Post.findByIdAndDelete(req.params.id)
+    .then(post => res.status(200).json(post))
 }
