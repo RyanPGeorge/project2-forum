@@ -2,6 +2,7 @@ var Post = require('../models/post');
 
 module.exports = {
   index,
+  show,
   create,
   delete: deleteOne,
   new: newPost
@@ -31,4 +32,11 @@ function create(req, res) {
 function deleteOne(req, res) {
   Post.findByIdAndDelete(req.params.id)
     .then(post => res.status(200).json(post))
+}
+
+function show(req, res) {
+  Post.findById(req.params.id)
+    .then(function(post){
+      res.render('/posts/')
+    })
 }
