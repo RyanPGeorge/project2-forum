@@ -63,4 +63,3 @@ function show(req, res) {
       console.log('post data: ', post);
     })
 }
-

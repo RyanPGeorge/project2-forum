@@ -3,13 +3,15 @@
 <section>
     
     <div>Subject: </div>
-    <div><%= post.subject %></div>
+    <div><%= post.subject %></div><br>
     <div>Author: </div>
-    <div><%= post.user.name %></div>
-   
-    <div><%= post.body %></div>
+    <div><%= post.user.name %></div><br>
+    <div>Post:</div>
+    <div><%= post.body %></div><br>
     <% if (user.id == post.user._id) { %>
-    <div><a href="/posts/update/<%= post._id %>">UPDATE POST</a></div>
+    <div>
+        <form action="/posts/update/<%= post._id %>"><input type="submit" value="Update Post"></form>
+    </div>
     <div>
       <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"><input type="submit" value="Delete Post"></form>
     </div>
