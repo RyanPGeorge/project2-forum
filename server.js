@@ -38,6 +38,7 @@ app.use(passport.session());
 app.use('/', homeRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
+app.use('/posts/new', postsRouter);
 app.use('/comments', commentsRouter);
 
 // catch 404 and forward to error handler

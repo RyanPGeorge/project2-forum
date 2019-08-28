@@ -6,7 +6,7 @@ var postSchema = new mongoose.Schema({
   user: userSchema, 
   subject: String,
   body: String,
-  //comments: [commentSchema],
+  //comments: [{type: Schema.Types.ObjectId, ref: 'Comment' }]
 }, {
   timestamps: true
 });

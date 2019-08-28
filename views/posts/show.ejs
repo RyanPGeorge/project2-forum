@@ -1,34 +1,27 @@
-<%- include('partials/header') %>
-<section id="show-page">
+<%- include('../partials/header') %>
+
+<section>
+    
     <div>Subject: </div>
     <div><%= post.subject %></div>
     <div>Author: </div>
-    <div><%= post.user %></div>
-    <div></div>
+    <div><%= post.user.name %></div>
+   
     <div><%= post.body %></div>
+    <div><% if (user) { %><input action="/posts" method="PUT"type="submit" value="Update Post"><% } %></div>
+    <div><% if (user) { %><input action="/posts" method="DELETE"type="submit" value="Delete Post"><% } %></div>
     <div>Comments:</div>
   </section>
 <table>
     <thead>
       <tr>
-        <th>Author</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
     </thead>
-    <tbody>
-      <% comments.forEach(function(c) { %>
-      <tr>
-        <td><%= c.user.name %></td>
-        <td><%= c.body %></td>
-        <td><a href="/index/<%= posts %>">GO BACK</a></td>
-      </tr>
-      <% }) %>
-    </tbody>
-  </table>
-  <form action="/comments" method="POST">
-    <input type="text" name="comment">
-    <textarea name="body"></textarea>
-    <input type="submit" value="Submit Comment">
-  </form>
+    <% if (user) { %>
+      <input action="/posts" method="DELETE"type="submit" value="Delete Comment">
+      <% } %>
+   
   <%- include('../partials/footer') %>

@@ -15,7 +15,7 @@ function index(req, res) {
 }
 
 function newPost(req, res) {
-  res.render('posts/new', {user: req.user, title: 'New Post'})
+  res.render('posts/new', { title: 'New Post'})
 }
 
 function create(req, res) {
@@ -31,12 +31,26 @@ function create(req, res) {
 
 function deleteOne(req, res) {
   Post.findByIdAndDelete(req.params.id)
-    .then(post => res.status(200).json(post))
+    .then(post => {
+      res.render('/posts');
+    })
+}
+
+function update(req, res) {
+  Post.findByIdAndUpdate(req.params.id)
+    .then(post => {
+      res.render('/posts/show');
+    })
 }
 
 function show(req, res) {
   Post.findById(req.params.id)
-    .then(function(post){
-      res.render('/posts/')
+    .then(post => {
+      res.render('posts/show', { 
+        title: 'The Converstaion | Post Details',
+        user: req.user,
+        post
+      })
+      console.log('post data: ', post);
     })
 }
