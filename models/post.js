@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 var userSchema = require('./user').userSchema;
+var commentSchema = require('./comment').commentSchema;
 
 
 var postSchema = new mongoose.Schema({
   user: userSchema, 
   subject: String,
   body: String,
-  //comments: [{type: Schema.Types.ObjectId, ref: 'Comment' }]
+  comments: [commentSchema]
 }, {
   timestamps: true
 });

@@ -4,8 +4,10 @@ module.exports = {
   index,
   show,
   create,
+  update,
   delete: deleteOne,
-  new: newPost
+  newForm,
+  updateForm
 };
 
 function index(req, res) {
@@ -14,8 +16,8 @@ function index(req, res) {
   });
 }
 
-function newPost(req, res) {
-  res.render('posts/new', { title: 'New Post'})
+function newForm(req, res) {
+  res.render('posts/new', {user: req.user, title: 'New Post'})
 }
 
 function create(req, res) {
@@ -32,14 +34,21 @@ function create(req, res) {
 function deleteOne(req, res) {
   Post.findByIdAndDelete(req.params.id)
     .then(post => {
-      res.render('/posts');
+      res.redirect('/posts');
+    })
+}
+
+function updateForm(req, res) {
+  Post.findById(req.params.id)
+    .then(post => {
+      res.render('posts/update', {user: req.user, title: 'Update Post', post} )
     })
 }
 
 function update(req, res) {
-  Post.findByIdAndUpdate(req.params.id)
+  Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then(post => {
-      res.render('/posts/show');
+      res.redirect('/posts/show');
     })
 }
 
@@ -54,3 +63,4 @@ function show(req, res) {
       console.log('post data: ', post);
     })
 }
+

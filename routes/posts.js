@@ -4,13 +4,20 @@ var postCtrl = require('../controllers/posts');
 
 
 router.get('/', postCtrl.index);
-router.post('/', postCtrl.create);
-router.get('/posts/new', postCtrl.new);
+router.post('/', isLoggedIn, postCtrl.create);
+router.get('/new', isLoggedIn, postCtrl.newForm);
 
-router.get('/:id', postCtrl.show);
-router.delete('/:id', postCtrl.delete);
+router.get('/update/:id', isLoggedIn, postCtrl.updateForm)
+router.put('/:id', isLoggedIn, postCtrl.update)
+
+router.get('/:id', isLoggedIn, postCtrl.show);
+router.delete('/:id', isLoggedIn, postCtrl.delete);
 
 
+function isLoggedIn(req, res, next) {
+  if ( req.isAuthenticated() ) return next();
+  res.redirect('/auth/google');
+}
 
 
 module.exports = router;

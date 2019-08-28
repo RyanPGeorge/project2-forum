@@ -1,14 +1,16 @@
 var mongoose = require('mongoose');
-
+var userSchema = require('./user').userSchema;
 
 
 var commentSchema = new mongoose.Schema({
-  name: String, // user.name?
-  Subject: String,
-  Body: String,
+  user: userSchema,
+  body: String
 }, {
   timestamps: true
 });
 
 
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = {
+  Comment: mongoose.model('Comment', commentSchema),
+  commentSchema
+}
