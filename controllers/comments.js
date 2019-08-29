@@ -1,22 +1,18 @@
-var Comment = require('../models/user');
+var Post = require('../models/post');
 
 module.exports = {
-  create,
-  newCommentForm
+  create
 };
 
 function create(req, res) {
   Post.findById(req.params.id, function(err, post) {
-    post.comment.push(req.body);
-    post.save(function(err) { //post.comment.save?
+    post.comments.push(req.body);
+    post.save(function(err) {
       res.redirect(`/posts/${post._id}`);
     });
   });
 }
 
-function newCommentForm(req, res) {
-  res.render('posts/newcomment', {user: req.user, title: 'New Comment'})
-}
 
 
 

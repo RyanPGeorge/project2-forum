@@ -7,7 +7,7 @@ module.exports = {
   update,
   delete: deleteOne,
   newForm,
-  updateForm
+  updateForm,
 };
 
 function index(req, res) {
@@ -48,7 +48,7 @@ function updateForm(req, res) {
 function update(req, res) {
   Post.findByIdAndUpdate(req.params.id, req.body, {new: true})
     .then(post => {
-      res.redirect('/posts/show');
+      res.redirect(`/posts/${post._id}`);
     })
 }
 
@@ -59,7 +59,7 @@ function show(req, res) {
         title: 'The Converstaion | Post Details',
         user: req.user,
         post
-      })
-      console.log('post data: ', post);
-    })
+      });
+      console.log(post);
+    });
 }

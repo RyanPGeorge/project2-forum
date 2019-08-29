@@ -18,27 +18,28 @@
     <% } %>
     <div>Comments:</div>
   </section>
+  <% if (post.comments.length) { %>
 <table>
     <thead>
       <tr>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Name</th>
+        <th>Comment</th>
       </tr>
     </thead>
     <tbody>
         <% post.comments.forEach(function(c) { %>
         <tr>
-          <td><%= c.user.name %></td>
-          <td><%= c.body %></td>
-          <td><a href="/index/<%= posts %>">GO BACK</a></td>
+          <td> <%= post.user.name %> </td>
+          <td> <%= c.body %> </td>
         </tr>
         <% }) %>
+        <% } %>
       </tbody>
     </table>
-    <form action="/comments" method="POST">
+    <form method="POST" action="/posts/<%= post._id %>/comments">
       <textarea name="body" required></textarea>
       <input type="submit" value="Submit Comment">
     </form>
+    <a href="/posts">GO BACK</a>
    
   <%- include('../partials/footer') %>
