@@ -1,9 +1,12 @@
 <%- include('../partials/header') %>
-  <h2><%= title %></h2>
-  <a href="/posts/new/">NEW POST</a>
-<table>
+  <a href="/posts/new/" class="button is-link">NEW POST</a>
+  <br>
+  <br>
+  <h1 class="title"><%= title %></h1>
+  <div class="block columns">
+<table class="table is-striped is-bordered">
     <thead>
-      <tr>
+      <tr class="is-selected">
         <th>Subject</th>
         <th>Author</th>
         <th></th>
@@ -14,9 +17,10 @@
       <tr>
         <td><%= p.subject %></td>
         <td><%= p.user.name %></td>
-        <td><a href="/posts/<%= p._id %>">SEE POST</a></td>
+        <td><a href="/posts/<%= p._id %>" class="button is-link is-small is-outlined">SEE POST</a></td>
       </tr>
       <% }) %>
     </tbody>
   </table>
+</div>
 <%- include('../partials/footer') %>

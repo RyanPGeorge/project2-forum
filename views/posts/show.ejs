@@ -10,10 +10,11 @@
     <div><%= post.body %></div><br>
     <% if (user.id == post.user._id) { %>
     <div>
-        <form action="/posts/update/<%= post._id %>"><input type="submit" value="Update Post"></form>
+        <form action="/posts/update/<%= post._id %>"><button type="submit" class="button is-link">Update Post</button></form>
     </div>
+    <br>
     <div>
-      <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"><input type="submit" value="Delete Post"></form>
+      <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"><button type="submit" class="button is-danger">DELETE POST</form>
     </div>
     <% } %>
     <div>Comments:</div>
@@ -29,7 +30,7 @@
     <tbody>
         <% post.comments.forEach(function(c) { %>
         <tr>
-          <td> <%= c._user %> </td>
+          <td> <%= c.user %> </td>
           <td> <%= c.body %> </td>
         </tr>
         <% }) %>
@@ -38,8 +39,8 @@
     </table>
     <form method="POST" action="/posts/<%= post._id %>/comments">
       <textarea name="body" required></textarea>
-      <input type="submit" value="Submit Comment">
+      <button type="submit" class="button is-primary">Submit Comment</button>
     </form>
-    <a href="/posts">GO BACK</a>
+    <a href="/posts" class="button is-link">GO BACK</a>
    
   <%- include('../partials/footer') %>

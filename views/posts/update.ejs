@@ -3,7 +3,7 @@
 <form action="/posts/<%= post._id %>?_method=PUT" method="POST">
   <input value="<%= post.subject %>" type="text" name="subject">
   <textarea name="body"><%= post.body %></textarea>
-  <input type="submit" value="Update Post">
+  <button type="submit" class="button is-link">Update Post</button>
 </form>
 
 <%- include('../partials/footer') %>
