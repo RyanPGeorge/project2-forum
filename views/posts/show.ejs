@@ -29,7 +29,7 @@
     <tbody>
         <% post.comments.forEach(function(c) { %>
         <tr>
-          <td> <%= post.user.name %> </td>
+          <td> <%= c._user %> </td>
           <td> <%= c.body %> </td>
         </tr>
         <% }) %>
