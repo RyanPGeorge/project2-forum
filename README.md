@@ -7,7 +7,7 @@
 
 Do you:
 -------
-* Have a Google account?
+* have a Google account?
 * have a deep philosophical argument you'd like to debate, but all your friends find you insufferable?
 * want to discuss that boring book that only you've been reading lately?
 * want to share your terrible and inflammatory political or religious views without annoying or offending people in real life?
