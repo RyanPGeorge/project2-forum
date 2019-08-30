@@ -1,28 +1,38 @@
 <%- include('../partials/header') %>
 
-<section>
-    
-    <div>Subject: </div>
-    <div><%= post.subject %></div><br>
-    <div>Author: </div>
-    <div><%= post.user.name %></div><br>
-    <div>Post:</div>
-    <div><%= post.body %></div><br>
+
+<br>
+<div>
+  <article class="message is-success">
+    <div class="message-header">
+      <p><strong><%= post.subject %></strong></p>
+      <p>By: <strong><%= post.user.name %></strong></p>
+    </div>
+    <div class="message-body">
+          <%= post.body %>
+    </div>
+    </article>
+</div>
+<br>
+
     <% if (user.id == post.user._id) { %>
     <div>
-        <form action="/posts/update/<%= post._id %>"><button type="submit" class="button is-link">Update Post</button></form>
+    <form action="/posts/update/<%= post._id %>"><button type="submit" class="button is-link">Update Post</button></form>
     </div>
+
     <br>
+
     <div>
-      <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"><button type="submit" class="button is-danger">DELETE POST</form>
+    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST"><button type="submit" class="button is-danger">DELETE POST</form>
     </div>
     <% } %>
-    <div>Comments:</div>
-  </section>
+    <br>
+
+  <div>Comments:</div>
   <% if (post.comments.length) { %>
-<table>
+  <table class="table is-striped is-bordered">
     <thead>
-      <tr>
+      <tr class="is-selected has-background-success">
         <th>Name</th>
         <th>Comment</th>
       </tr>
@@ -30,17 +40,19 @@
     <tbody>
         <% post.comments.forEach(function(c) { %>
         <tr>
-          <td> <%= c.user %> </td>
+          <td></td>
           <td> <%= c.body %> </td>
         </tr>
         <% }) %>
         <% } %>
       </tbody>
     </table>
+    <div>Add a Comment:</div>
     <form method="POST" action="/posts/<%= post._id %>/comments">
-      <textarea name="body" required></textarea>
-      <button type="submit" class="button is-primary">Submit Comment</button>
+      <textarea name="body" class="textarea" required></textarea>
+      <button type="submit" class="button is-success">Submit Comment</button>
     </form>
+<br>
     <a href="/posts" class="button is-link">GO BACK</a>
    
   <%- include('../partials/footer') %>

@@ -1,9 +1,15 @@
 <%- include('../partials/header') %>
-<h1>NEW POST</h1>
+<h1 class="title has-text-success">NEW POST</h1>
 <form action="/posts" method="POST">
-  <input type="text" name="subject">
-  <textarea name="body"></textarea>
-  <input type="submit" value="Submit Post">
+  SUBJECT:
+  <br>
+  <input type="text" name="subject" class="input">
+  <br>
+  <br>
+  BODY:<textarea name="body" class="textarea"></textarea>
+  <button type="submit" class="button is-success">Submit Post</button>
 </form>
+<br>
+<a href="/posts" class="button is-link">GO BACK</a>
 
 <%- include('../partials/footer') %>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-background-light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +7,20 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
   <title><%= title %></title>
-</head>
-<body>
-    <div class="block">
-        <nav>
-          <div class="nav-left">
-            <a href="" >The Conversation</a>
+    </head>
+      <body>
+        <div class="block">
+          <nav class="nav">
+            <div class="nav-left nav-menu">
+              <a href="" class="nav-item"><h1 class="title is-1">The Conversation</h1></a>
+            </div>
               <% if (user) { %>
-                <a href="/logout"></i>Log Out</a>
-          </div>
+            <div class="nav-right nav-menu">
+            <a href="/logout" class="nav-item is-pulled-right"><button class="button is-warning is-small is-rounded">Log Out</button></a>
               <% } else { %>
-          <div class="nav-right"></div>
-                <a href="/auth/google"></i>Login with Google</a>
+            <a href="/auth/google" class="nav-item is-pulled-right"><button class="button is-primary is-small is-rounded">Login with Google</button></a>
               <% } %>
-          </div>
-        </nav>
-      </div>
-    <main>
+            </div>
+          </nav>
+        </div>
+      <main>
